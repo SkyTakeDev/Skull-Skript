@@ -1,0 +1,22 @@
+#Skull
+
+options:
+	engpf: &c&lITEMSUCHT &8» 
+	depf: &c&lITEMSUCHT &8»
+	noperms: &c&lITEMSUCHT &8» &7Dazu hast du keine Rechte! 
+	
+variables:
+	{language.eng} = false
+	{language.de} = true
+	
+command /skull [<offlineplayer>]:
+	permission: skull.use
+	permission message: {@noperms}
+	cooldown: 3 days
+	cooldown message: &c&lITEMSUCHT &8» &7Bitte warte &b3 Tage &7bis du dir erneut einen Kopf geben kannst!
+	trigger:
+		if arg 1 is not set:
+			send "{@depf} &7Benutze: &b/skull <player>"
+		if arg 1 is set:
+			send "{@depf} &7Du hast den Kopf von &b%arg 1% &7bekommen."
+			give player skull of arg 1
